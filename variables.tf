@@ -15,5 +15,5 @@ variable "dc_description" {
 
 variable "dc_sec_auth_protection" {
   description = "Boolean value representing if the data center requires extra protection e.g. two factor protection"
-  default = false
+  default     = false
 }
