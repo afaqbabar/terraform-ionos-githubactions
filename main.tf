@@ -19,13 +19,8 @@ terraform {
 }
 
 
-provider "ionoscloud" {
-  version = "~> 6.2.0"
-}
-
-
 module "dc" {
-  source = "./dc"
+  source = "./modules/dc"
 
 
 
