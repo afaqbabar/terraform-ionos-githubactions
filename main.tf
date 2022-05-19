@@ -16,7 +16,7 @@ terraform {
   }
 }
 
-
+/*
 module "dc" {
   source = "./modules/dc"
 
@@ -28,4 +28,4 @@ module "dc" {
   dc_description         = var.dc_description
   dc_sec_auth_protection = var.dc_sec_auth_protection
 }
-
+*/
