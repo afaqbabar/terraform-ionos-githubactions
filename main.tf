@@ -19,7 +19,7 @@ terraform {
 }
 
 
-provider "ionos-cloud/ionoscloud" {
+provider "ionoscloud" {
   region = "de/fra"
 }
 
