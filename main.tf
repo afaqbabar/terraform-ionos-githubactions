@@ -1,6 +1,6 @@
 terraform {
 
-  required_version = ">=0.14"
+  required_version = ">= 0.14.0"
 
   required_providers {
     ionoscloud = {
@@ -19,7 +19,7 @@ terraform {
 }
 
 module "dc" {
-  source                 = "./dc"
+  source                 = "../dc"
   dc_name                = var.dc_name
   dc_location            = var.dc_location
   dc_description         = var.dc_description
