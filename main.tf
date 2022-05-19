@@ -18,8 +18,18 @@ terraform {
   }
 }
 
+
+provider "ionos-cloud/ionoscloud" {
+  region = "de/fra"
+}
+
+
 module "dc" {
-  source                 = "./dc"
+  source = "./dc"
+
+
+
+
   dc_name                = var.dc_name
   dc_location            = var.dc_location
   dc_description         = var.dc_description
