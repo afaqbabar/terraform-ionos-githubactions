@@ -20,7 +20,7 @@ terraform {
 
 
 provider "ionoscloud" {
-  region = "de/fra"
+  version = "~> 6.2.0"
 }
 
 
