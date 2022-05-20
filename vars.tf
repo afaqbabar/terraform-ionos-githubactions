@@ -40,6 +40,6 @@ variable "k8s_ver" {
 
 variable "nodepool_name" {
   description = "Name of node pool"
-  default = "k8s_nodepool_01"
+  default     = "k8s_nodepool_01"
 }
 
