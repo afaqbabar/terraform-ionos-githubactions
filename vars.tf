@@ -15,15 +15,15 @@ variable "dc_description" {
 
 variable "lan_name" {
   description = "Name of Private LAN"
-  default = "afaq_lan_01"
+  default     = "afaq_lan_01"
 }
 
 variable "ipblock_name" {
   description = "Name of IP block"
-  default = "afaq_ipblock_01"
+  default     = "afaq_ipblock_01"
 }
 
 variable "ipblock_size" {
   description = "Size of IP block"
-  default = 3
+  default     = 3
 }

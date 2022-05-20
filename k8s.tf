@@ -6,13 +6,13 @@ resource "ionoscloud_datacenter" "afaq_dc" {
 }
 
 resource "ionoscloud_lan" "afaq_lan" {
-  datacenter_id         = ionoscloud_datacenter.afaq_dc.id
-  public                = false
-  name                  = var.lan_name
+  datacenter_id = ionoscloud_datacenter.afaq_dc.id
+  public        = false
+  name          = var.lan_name
 }
 
 resource "ionoscloud_ipblock" "afaq_ipblock" {
-  location              = var.dc_location
-  size                  = var.ipblock_size
-  name                  = var.ipblock_name
+  location = var.dc_location
+  size     = var.ipblock_size
+  name     = var.ipblock_name
 }
