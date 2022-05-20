@@ -65,3 +65,12 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
     ann2 = "value2"
   }
 }
+
+provider "kubernetes" {
+  host  = ionoscloud_k8s_cluster.k8s_cluster_01.endpoint
+  token = ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].token
+  cluster_ca_certificate = base64decode(
+    ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].cluster_ca_certificate
+  )
+}
+
