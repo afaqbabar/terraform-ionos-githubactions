@@ -30,10 +30,10 @@ variable "ipblock_size" {
 
 variable "k8s_name" {
   description = "Name of k8s cluster"
-  default = "k8s_cluster_01"
+  default     = "k8s_cluster_01"
 }
 
 variable "k8s_ver" {
   description = "K8s Version"
-  default = "1.22.8"
+  default     = "1.22.8"
 }
