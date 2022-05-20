@@ -16,3 +16,13 @@ resource "ionoscloud_ipblock" "afaq_ipblock" {
   size     = var.ipblock_size
   name     = var.ipblock_name
 }
+
+resource "ionoscloud_k8s_cluster" "afaq_k8s_cluster" {
+  name                  = var.k8s_name
+  k8s_version           = var.k8s_ver
+  public                = true
+  maintenance_window {
+    day_of_the_week     = "Sunday"
+    time                = "09:00:00Z"
+  }
+}
