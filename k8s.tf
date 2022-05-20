@@ -72,7 +72,7 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
 
 resource "local_file" "kubeconfig" {
   sensitive_content = yamlencode(jsondecode(data.ionoscloud_k8s_cluster.k8s_cluster_01.kube_config))
-  filename          = "kubeconfig.yaml"
+  filename          = "config"
 }
 
 provider "kubernetes" {
