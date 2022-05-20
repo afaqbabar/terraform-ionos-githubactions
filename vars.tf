@@ -37,3 +37,9 @@ variable "k8s_ver" {
   description = "K8s Version"
   default     = "1.22.8"
 }
+
+variable "nodepool_name" {
+  description = "Name of node pool"
+  default = "k8s_nodepool_01"
+}
+
