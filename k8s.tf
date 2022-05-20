@@ -27,6 +27,10 @@ resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   }
 }
 
+data "ionoscloud_k8s_cluster" "k8s_cluster_01" {
+  name = "k8s_cluster_01"
+}
+
 resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   datacenter_id  = ionoscloud_datacenter.dc_02.id
   k8s_cluster_id = ionoscloud_k8s_cluster.k8s_cluster_01.id
@@ -67,18 +71,6 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
 }
 
 provider "kubernetes" {
-  host  = ionoscloud_k8s_cluster.k8s_cluster_01.endpoint
-  token = ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].token
-  cluster_ca_certificate = base64decode(
-    ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].cluster_ca_certificate
-  )
-}
-
-provider "kubectl" {
-  host  = ionoscloud_k8s_cluster.k8s_cluster_01.endpoint
-  token = ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].token
-  cluster_ca_certificate = base64decode(
-    ionoscloud_k8s_cluster.k8s_cluster_01.kube_config[0].cluster_ca_certificate
-  )
-  load_config_file = false
+  host  = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].clusters[0].cluster.server
+  token = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].users[0].user.token
 }
