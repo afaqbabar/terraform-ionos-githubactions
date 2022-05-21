@@ -104,4 +104,10 @@ jobs:
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: apply -f k8s/prometheus-deployment.yaml
+    - name: create prometheus service
+      uses: steebchen/kubectl@v2.0.0
+      with:
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: apply -f k8s/prometheus-service.yaml
+      
     
