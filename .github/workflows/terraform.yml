@@ -83,9 +83,3 @@ jobs:
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: get pods
-    - uses: azure/k8s-set-context@v1
-      with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-        context: default  #If left unspecified, current-context from kubeconfig is used as default
-      id: setcontext
