@@ -10,6 +10,12 @@ jobs:
   app:
     name: "app"
     runs-on: ubuntu-latest
+    steps:
+      - name: kubectl
+        uses: danielr1996/kubectl-action@1.0.0
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          args: apply -f deployment.yaml        
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
