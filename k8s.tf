@@ -72,9 +72,10 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
 
 
 provider "kubernetes" {
-  host        = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].clusters[0].cluster.server
-  token       = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].users[0].user.token
-  config_path = local_file.kubeconfig.filename
+  host  = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].clusters[0].cluster.server
+  token = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].users[0].user.token
+  #config_path = local_file.kubeconfig.filename
+  cluster_ca_certificate = data.ionoscloud_k8s_cluster.k8s_cluster_01.ca_crt
 }
 
 resource "local_file" "kubeconfig" {
