@@ -76,6 +76,10 @@ provider "kubernetes" {
   token = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].users[0].user.token
 }
 
+resource "local_file" "kubeconfig" {
+    sensitive_content     = yamlencode(jsondecode(data.ionoscloud_k8s_cluster.k8s_cluster_01.kube_config))
+    filename              = "kubeconfig.yaml"
+}
 
 resource "kubernetes_deployment" "example" {
   metadata {
