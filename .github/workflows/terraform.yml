@@ -7,6 +7,9 @@ on:
   pull_request:
 
 jobs:
+  app:
+    name: "app"
+    runs-on: ubuntu-latest
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
