@@ -82,7 +82,7 @@ resource "local_file" "kubeconfig" {
 }
 
 provider "kubernetes" {
-  config_path    = "~/.kube/kubeconfig.yaml"
+  config_path = "~/.kube/kubeconfig.yaml"
 }
 
 
