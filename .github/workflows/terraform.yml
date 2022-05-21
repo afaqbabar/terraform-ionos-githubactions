@@ -78,8 +78,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: deploy to cluster
+    - name: get deployments
       uses: steebchen/kubectl@v2.0.0
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: get pods
+        command: apply -f k8s/prometheus-deployment.yaml
