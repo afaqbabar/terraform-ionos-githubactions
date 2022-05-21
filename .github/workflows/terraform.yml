@@ -89,13 +89,19 @@ jobs:
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: apply -f k8s/ns-monitoring.yaml
-    - name: deploy prometheus
+    - name: create clusterRole for prometheus
       uses: steebchen/kubectl@v2.0.0
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: apply -f k8s/
-    - name: install ingress controller via helm
-      run: |
-       helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-       helm install ingress-nginx ingress-nginx/ingress-nginx --set controller.service.loadBalancerIP=87.106.112.195
-      
+        command: apply -f k8s/clusterRole.yaml
+    - name: create config-map for prometheus
+      uses: steebchen/kubectl@v2.0.0
+      with:
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: apply -f k8s/config-map.yaml
+    - name: create deployment for prometheus
+      uses: steebchen/kubectl@v2.0.0
+      with:
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: apply -f k8s/prometheus-deployment.yaml
+    
