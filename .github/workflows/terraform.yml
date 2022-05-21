@@ -77,10 +77,9 @@ jobs:
     name: "app"
     runs-on: ubuntu-latest
     steps:
-      - name: k8s-set-context
-        uses: azure/k8s-set-context@v1
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          context: default
-        id: setcontext
+    - uses: actions/checkout@master
+    - name: deploy to cluster
+      uses: steebchen/kubectl@v2.0.0
+      with: # defaults to latest kubectl binary version
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: set image --record deployment/my-app container=${{ github.repository }}:${{ github.sha }}
