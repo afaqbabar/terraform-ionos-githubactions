@@ -81,6 +81,11 @@ resource "local_file" "kubeconfig" {
   filename          = "kubeconfig.yaml"
 }
 
+provider "kubernetes" {
+  config_path    = "~/.kube/kubeconfig.yaml"
+}
+
+
 resource "kubernetes_deployment" "example" {
   metadata {
     name = "terraform-example"
