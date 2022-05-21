@@ -77,6 +77,11 @@ jobs:
     name: "app"
     runs-on: ubuntu-latest
     steps:
+    - name: install helm
+      uses: azure/setup-helm@v1
+      with:
+        version: default
+      id: install      
     - uses: actions/checkout@master
     - name: create namespace monitoring
       uses: steebchen/kubectl@v2.0.0
