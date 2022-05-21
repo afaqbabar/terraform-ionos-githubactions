@@ -79,8 +79,10 @@ jobs:
     steps:
     - name: install helm
       run: |
-       echo Hello1
-       echo Hello2
+       wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+       tar -zxvf helm-v3.0.2-linux-amd64.tar.gz
+       sudo mv linux-amd64/helm /usr/local/bin/helm
+       helm help
     - uses: actions/checkout@master
     - name: create namespace monitoring
       uses: steebchen/kubectl@v2.0.0
