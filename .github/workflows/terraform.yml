@@ -78,8 +78,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: get deployments
+    - name: create namespace monitoring
       uses: steebchen/kubectl@v2.0.0
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: apply -f k8s/prometheus-deployment.yaml
+        command: create namespace monitoring
