@@ -83,3 +83,8 @@ jobs:
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: apply -f k8s/ns-monitoring.yaml
+    - name: deploy prometheus
+      uses: steebchen/kubectl@v2.0.0
+      with:
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: apply -f k8s/
