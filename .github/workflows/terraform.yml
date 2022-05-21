@@ -73,6 +73,7 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
   app:
+    needs: terraform
     name: "app"
     runs-on: ubuntu-latest
     steps:
