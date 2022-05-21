@@ -25,7 +25,6 @@ resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
     day_of_the_week = "Sunday"
     time            = "09:00:00Z"
   }
-
 }
 
 data "ionoscloud_k8s_cluster" "k8s_cluster_01" {
