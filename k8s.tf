@@ -31,6 +31,26 @@ resource "ionoscloud_networkloadbalancer" "nlb_01" {
   ips           = ["212.227.51.19"]
 }
 
+resource "ionoscloud_networkloadbalancer_forwardingrule" "example" {
+  datacenter_id          = ionoscloud_datacenter.dc_02.id
+  networkloadbalancer_id = ionoscloud_networkloadbalancer.nlb_01.id
+  name                   = "fw-prometheus"
+  algorithm              = "SOURCE_IP"
+  protocol               = "TCP"
+  listener_ip            = "212.227.51.19"
+  listener_port          = "8080"
+  targets {
+    ip     = "87.106.112.195"
+    port   = "9090"
+    weight = "123"
+    health_check {
+      check          = true
+      check_interval = 1000
+    }
+  }
+}
+
+
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
   k8s_version = var.k8s_ver
