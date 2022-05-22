@@ -28,6 +28,7 @@ resource "ionoscloud_networkloadbalancer" "nlb_01" {
   name          = "nlb_01"
   listener_lan  = ionoscloud_lan.lan_02.id
   target_lan    = ionoscloud_lan.lan_01.id
+  ips           = ["212.227.51.19"]
 }
 
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
