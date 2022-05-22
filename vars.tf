@@ -18,6 +18,12 @@ variable "lan_name" {
   default     = "afaq_lan_01"
 }
 
+variable "lan_02_name" {
+  description = "Name of Public LAN 02"
+  default     = "afaqlan_02"
+  public      = true
+}
+
 variable "ipblock_name" {
   description = "Name of IP block"
   default     = "afaq_ipblock_01"
