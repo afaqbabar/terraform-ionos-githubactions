@@ -21,7 +21,6 @@ variable "lan_name" {
 variable "lan_02_name" {
   description = "Name of Public LAN 02"
   default     = "afaqlan_02"
-  public      = true
 }
 
 variable "ipblock_name" {
