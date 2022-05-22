@@ -29,7 +29,7 @@ resource "ionoscloud_networkloadbalancer" "nlb_01" {
   listener_lan   = ionoscloud_lan.lan_02.id
   target_lan     = ionoscloud_lan.lan_01.id
   ips            = ["212.227.51.19"]
-  lb_private_ips = ["10.100.0.2/24/24"]
+  lb_private_ips = ["10.100.0.2/24"]
 }
 
 resource "ionoscloud_networkloadbalancer_forwardingrule" "example" {
