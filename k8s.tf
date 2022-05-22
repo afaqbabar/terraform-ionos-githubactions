@@ -26,8 +26,8 @@ resource "ionoscloud_ipblock" "ipblock_01" {
 resource "ionoscloud_networkloadbalancer" "nlb_01" {
   datacenter_id = ionoscloud_datacenter.dc_02.id
   name          = "nlb_01"
-  listener_lan  = ionoscloud_lan.lan_01.id
-  target_lan    = ionoscloud_lan.lan_02.id
+  listener_lan  = ionoscloud_lan.lan_02.id
+  target_lan    = ionoscloud_lan.lan_01.id
 }
 
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
