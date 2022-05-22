@@ -24,11 +24,12 @@ resource "ionoscloud_ipblock" "ipblock_01" {
 }
 
 resource "ionoscloud_networkloadbalancer" "nlb_01" {
-  datacenter_id = ionoscloud_datacenter.dc_02.id
-  name          = "nlb_01"
-  listener_lan  = ionoscloud_lan.lan_02.id
-  target_lan    = ionoscloud_lan.lan_01.id
-  ips           = ["212.227.51.19"]
+  datacenter_id  = ionoscloud_datacenter.dc_02.id
+  name           = "nlb_01"
+  listener_lan   = ionoscloud_lan.lan_02.id
+  target_lan     = ionoscloud_lan.lan_01.id
+  ips            = ["212.227.51.19"]
+  lb_private_ips = ["10.100.0.2/24/24"]
 }
 
 resource "ionoscloud_networkloadbalancer_forwardingrule" "example" {
