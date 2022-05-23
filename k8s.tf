@@ -11,13 +11,13 @@ resource "ionoscloud_lan" "lan_01" {
   name          = var.lan_name
 }
 
-
+/*
 resource "ionoscloud_ipblock" "ipblock_01" {
   location = var.dc_location
   size     = var.ipblock_size
   name     = var.ipblock_name
 }
-
+*/
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
   k8s_version = var.k8s_ver
