@@ -31,7 +31,7 @@ resource "ionoscloud_networkloadbalancer" "nlb_01" {
   ips            = ["212.227.51.19"]
   lb_private_ips = ["10.100.0.2/24"]
 }
-/*
+
 resource "ionoscloud_networkloadbalancer_forwardingrule" "fwd_01" {
   datacenter_id          = ionoscloud_datacenter.dc_02.id
   networkloadbalancer_id = ionoscloud_networkloadbalancer.nlb_01.id
@@ -50,7 +50,7 @@ resource "ionoscloud_networkloadbalancer_forwardingrule" "fwd_01" {
     }
   }
 }
-*/
+
 
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
@@ -104,7 +104,7 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
     ann1 = "value1"
     ann2 = "value2"
   }
-  */
+  
 }
 
 
@@ -130,7 +130,6 @@ resource "kubernetes_deployment" "example" {
 
   spec {
     replicas = 3
-
     selector {
       match_labels = {
         test = "MyExampleApp"
