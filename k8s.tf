@@ -6,7 +6,7 @@ resource "ionoscloud_datacenter" "dc_01" {
 }
 
 resource "ionoscloud_lan" "lan_01" {
-  datacenter_id = ionoscloud_datacenter.dc_02.id
+  datacenter_id = ionoscloud_datacenter.dc_01.id
   public        = false
   name          = var.lan_name
 }
@@ -30,7 +30,7 @@ resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
 
 
 resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
-  datacenter_id  = ionoscloud_datacenter.dc_02.id
+  datacenter_id  = ionoscloud_datacenter.dc_01.id
   k8s_cluster_id = ionoscloud_k8s_cluster.k8s_cluster_01.id
   name           = var.nodepool_name
   k8s_version    = ionoscloud_k8s_cluster.k8s_cluster_01.k8s_version
