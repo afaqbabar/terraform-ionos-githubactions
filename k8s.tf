@@ -27,13 +27,13 @@ resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
     time            = "09:00:00Z"
   }
 }
-/*
+
 data "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name = "k8s_cluster_01"
 }
 
 
-resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
+resource "ionoscloud_k8s_node_pool" "k8s_node_pool_02" {
   datacenter_id  = ionoscloud_datacenter.dc_01.id
   k8s_cluster_id = ionoscloud_k8s_cluster.k8s_cluster_01.id
   name           = var.nodepool_name
@@ -87,4 +87,4 @@ resource "local_file" "kubeconfig" {
   sensitive_content = yamlencode(jsondecode(data.ionoscloud_k8s_cluster.k8s_cluster_01.kube_config))
   filename          = "kubeconfig.yaml"
 }
-*/
+
