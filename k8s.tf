@@ -1,4 +1,4 @@
-resource "ionoscloud_datacenter" "dc_02" {
+resource "ionoscloud_datacenter" "dc_01" {
   name                = var.dc_name
   location            = var.dc_location
   description         = var.dc_description
@@ -6,7 +6,7 @@ resource "ionoscloud_datacenter" "dc_02" {
 }
 
 resource "ionoscloud_lan" "lan_01" {
-  datacenter_id = ionoscloud_datacenter.dc_02.id
+  datacenter_id = ionoscloud_datacenter.dc_01.id
   public        = false
   name          = var.lan_name
 }
