@@ -11,13 +11,13 @@ resource "ionoscloud_lan" "lan_01" {
   name          = var.lan_name
 }
 
-/*
+
 resource "ionoscloud_ipblock" "ipblock_01" {
   location = var.dc_location
   size     = var.ipblock_size
   name     = var.ipblock_name
 }
-*/
+
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
   k8s_version = var.k8s_ver
@@ -31,8 +31,8 @@ resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
 data "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name = "k8s_cluster_01"
 }
-*/
-/*
+
+
 resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   datacenter_id  = ionoscloud_datacenter.dc_01.id
   k8s_cluster_id = ionoscloud_k8s_cluster.k8s_cluster_01.id
@@ -73,9 +73,9 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   }
 
 }
-*/
 
-/*
+
+
 provider "kubernetes" {
   host  = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].clusters[0].cluster.server
   token = data.ionoscloud_k8s_cluster.k8s_cluster_01.config[0].users[0].user.token
