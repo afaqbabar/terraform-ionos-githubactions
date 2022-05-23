@@ -21,7 +21,7 @@ resource "ionoscloud_ipblock" "ipblock_01" {
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
   k8s_version = var.k8s_ver
-  public      = false
+  public      = true
   maintenance_window {
     day_of_the_week = "Sunday"
     time            = "09:00:00Z"
