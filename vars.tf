@@ -1,6 +1,6 @@
 variable "dc_name" {
   description = "Name of DC"
-  default     = "DC for k8s - 02"
+  default     = "DC for k8s - 01"
 }
 
 variable "dc_location" {
@@ -10,7 +10,7 @@ variable "dc_location" {
 
 variable "dc_description" {
   description = "Description of DC"
-  default     = "DC for k8s - 02"
+  default     = "DC for k8s - 01"
 }
 
 variable "lan_name" {
@@ -18,10 +18,6 @@ variable "lan_name" {
   default     = "afaq_lan_01"
 }
 
-variable "lan_02_name" {
-  description = "Name of Public LAN 02"
-  default     = "afaqlan_02"
-}
 
 variable "ipblock_name" {
   description = "Name of IP block"
@@ -30,7 +26,7 @@ variable "ipblock_name" {
 
 variable "ipblock_size" {
   description = "Size of IP block"
-  default     = 3
+  default     = 6
 }
 
 variable "k8s_name" {

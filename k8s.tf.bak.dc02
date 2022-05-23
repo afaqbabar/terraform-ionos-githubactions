@@ -1,4 +1,4 @@
-resource "ionoscloud_datacenter" "dc_01" {
+resource "ionoscloud_datacenter" "dc_02" {
   name                = var.dc_name
   location            = var.dc_location
   description         = var.dc_description
@@ -11,6 +11,11 @@ resource "ionoscloud_lan" "lan_01" {
   name          = var.lan_name
 }
 
+resource "ionoscloud_lan" "lan_02" {
+  datacenter_id = ionoscloud_datacenter.dc_02.id
+  public        = true
+  name          = var.lan_02_name
+}
 
 resource "ionoscloud_ipblock" "ipblock_01" {
   location = var.dc_location
@@ -18,16 +23,27 @@ resource "ionoscloud_ipblock" "ipblock_01" {
   name     = var.ipblock_name
 }
 
+resource "ionoscloud_networkloadbalancer" "nlb_01" {
+  datacenter_id = ionoscloud_datacenter.dc_02.id
+  name          = "nlb_01"
+  listener_lan  = ionoscloud_lan.lan_02.id
+  target_lan    = ionoscloud_lan.lan_01.id
+  ips           = ["212.227.51.19"]
+}
+
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
   k8s_version = var.k8s_ver
-  public      = false
+  public      = true
   maintenance_window {
     day_of_the_week = "Sunday"
     time            = "09:00:00Z"
   }
 }
 
+data "ionoscloud_k8s_cluster" "k8s_cluster_01" {
+  name = "k8s_cluster_01"
+}
 
 resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   datacenter_id  = ionoscloud_datacenter.dc_02.id
@@ -50,7 +66,6 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   ram_size          = 2048
   storage_size      = 40
   public_ips        = [ionoscloud_ipblock.ipblock_01.ips[0], ionoscloud_ipblock.ipblock_01.ips[1]]
-
   lans {
     id   = ionoscloud_lan.lan_01.id
     dhcp = true
@@ -67,7 +82,6 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
     ann1 = "value1"
     ann2 = "value2"
   }
-
 }
 
 
@@ -83,3 +97,62 @@ resource "local_file" "kubeconfig" {
   filename          = "kubeconfig.yaml"
 }
 
+resource "kubernetes_deployment" "example" {
+  metadata {
+    name = "terraform-example"
+    labels = {
+      test = "MyExampleApp"
+    }
+  }
+
+  spec {
+    replicas = 3
+
+    selector {
+      match_labels = {
+        test = "MyExampleApp"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          test = "MyExampleApp"
+        }
+      }
+
+      spec {
+        container {
+          image = "nginx:1.21.6"
+          name  = "example"
+
+          resources {
+            limits = {
+              cpu    = "0.5"
+              memory = "512Mi"
+            }
+            requests = {
+              cpu    = "250m"
+              memory = "50Mi"
+            }
+          }
+
+          liveness_probe {
+            http_get {
+              path = "/"
+              port = 80
+
+              http_header {
+                name  = "X-Custom-Header"
+                value = "Awesome"
+              }
+            }
+
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
+        }
+      }
+    }
+  }
+}
