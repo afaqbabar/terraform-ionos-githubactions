@@ -87,7 +87,7 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
   ram_size          = 2048
   storage_size      = 40
   public_ips        = [ionoscloud_ipblock.ipblock_01.ips[0], ionoscloud_ipblock.ipblock_01.ips[1]]
-  /*
+
   lans {
     id   = ionoscloud_lan.lan_01.id
     dhcp = true
@@ -104,7 +104,7 @@ resource "ionoscloud_k8s_node_pool" "k8s_node_pool_01" {
     ann1 = "value1"
     ann2 = "value2"
   }
-  
+
 }
 
 
