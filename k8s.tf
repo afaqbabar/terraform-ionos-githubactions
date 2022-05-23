@@ -41,7 +41,7 @@ resource "ionoscloud_networkloadbalancer_forwardingrule" "example" {
   listener_ip            = "212.227.51.19"
   listener_port          = "8080"
   targets {
-    ip     = "87.106.112.195"
+    ip     = "212.227.51.18"
     port   = "9090"
     weight = "123"
     health_check {
