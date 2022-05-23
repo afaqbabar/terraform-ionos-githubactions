@@ -22,7 +22,7 @@ resource "ionoscloud_ipblock" "ipblock_01" {
   size     = var.ipblock_size
   name     = var.ipblock_name
 }
-
+/*
 resource "ionoscloud_networkloadbalancer" "nlb_01" {
   datacenter_id  = ionoscloud_datacenter.dc_02.id
   name           = "nlb_01"
@@ -50,7 +50,7 @@ resource "ionoscloud_networkloadbalancer_forwardingrule" "fwd_01" {
     }
   }
 }
-
+*/
 
 resource "ionoscloud_k8s_cluster" "k8s_cluster_01" {
   name        = var.k8s_name
